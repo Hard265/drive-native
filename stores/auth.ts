@@ -1,4 +1,4 @@
-import { makeObservable, observable, action, runInAction } from "mobx";
+import { makeObservable, observable, action, runInAction, computed } from "mobx";
 import * as SecureStore from "expo-secure-store";
 
 interface Token {
@@ -7,21 +7,27 @@ interface Token {
 }
 
 class AuthStore {
+    isLoading: boolean = false;
     token: Token | null = null;
 
     constructor() {
         makeObservable(this, {
             token: observable,
+            isLoading: observable,
+            isAuthenticated: computed,
             setToken: action,
             removeToken: action,
-            isAuthenticated: observable
         });
     }
 
     async setup() {
+        runInAction(()=>{
+            this.isLoading = true
+        })
         const tokenRaw = await SecureStore.getItemAsync("token")
         runInAction(() => {
             this.token = JSON.parse(tokenRaw || "") || null
+            this.isLoading = false
         })
     }
 
@@ -45,4 +51,5 @@ class AuthStore {
     }
 }
 
-export default new AuthStore();
+const authStore = new AuthStore();
+export default authStore;

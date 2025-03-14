@@ -1,69 +1,55 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text } from "react-native";
+import authStore from "../../stores/auth";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
 
 const SignIn = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [form, setForm] = React.useState({
+        email: "",
+        password: "",
+    });
+    const [pending, setPending] = React.useState(false);
 
-    const handleSignIn = () => {
-        // Handle sign-in logic here
-        console.log('Email:', email);
-        console.log('Password:', password);
+    const handleSignIn = async () => {
+        setPending(true);
+        await authStore.setToken({
+            access: "TODO:",
+            refresh: "TODO:",
+        });
+        setPending(false);
     };
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Sign In</Text>
-            <View style={styles.inputContainer}>
-                <Text style={styles.label}>Email</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Email"
-                    value={email}
-                    onChangeText={setEmail}
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                />
-            </View>
-            <View style={styles.inputContainer}>
-                <Text style={styles.label}>Password</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Password"
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry
-                />
-            </View>
-            <Button title="Sign In" onPress={handleSignIn} />
+        <View style={{ flex: 1, alignItems: "flex-start" }}>
+            <Text
+                style={{
+                    fontSize: 24,
+                    fontFamily: "Roobert-Medium",
+                }}
+            >
+                Sign In to Omni_drive
+            </Text>
+            <Input
+                label="Email address"
+                value={form.email}
+                onChange={(email) => setForm((prev) => ({ ...prev, email }))}
+            />
+            <Input
+                label="Password"
+                value={form.password}
+                onChange={(password) =>
+                    setForm((prev) => ({ ...prev, password }))
+                }
+            />
+            <Button loading={pending} disabled={pending}>
+                Sign in
+            </Button>
+<View>
+
+</View>
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        padding: 16,
-    },
-    title: {
-        fontSize: 24,
-        marginBottom: 16,
-        textAlign: 'center',
-    },
-    inputContainer: {
-        marginBottom: 12,
-    },
-    label: {
-        marginBottom: 4,
-        fontSize: 16,
-    },
-    input: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        paddingHorizontal: 8,
-    },
-});
 
 export default SignIn;

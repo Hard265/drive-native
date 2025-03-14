@@ -3,9 +3,10 @@
     "name": "drive-native",
     "slug": "drive-native",
     "version": "1.0.0",
+    "githubUrl": "https://github.com/hard265/drive-native",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -21,11 +22,17 @@
         "backgroundColor": "#ffffff"
       }
     },
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "primaryColor": "#7e22fe",
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-font"
     ]
   }
 }
