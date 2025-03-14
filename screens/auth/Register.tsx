@@ -13,12 +13,9 @@ const Register = () => {
     });
     const [pending, setPending] = React.useState(false);
 
-    const handleSignIn = async () => {
+    const handleRegister = async () => {
         setPending(true);
-        await authStore.setToken({
-            access: "TODO:",
-            refresh: "TODO:",
-        });
+
         setPending(false);
     };
 
@@ -39,21 +36,40 @@ const Register = () => {
             <Input
                 label="Email address"
                 value={form.email}
+                type="email-address"
+                placeholder="your@email.com"
                 onChange={(email) => setForm((prev) => ({ ...prev, email }))}
             />
             <Input
                 label="Password"
                 value={form.password}
+                secure
                 onChange={(password) =>
                     setForm((prev) => ({ ...prev, password }))
                 }
             />
-            <Text style={{ ...theme.fonts.regular, fontSize: 16, marginVertical:12 }}>
-                By signing up you agree to our terms of service and privacy
-                policy.
+            <Text
+                style={{
+                    ...theme.fonts.regular,
+                    fontSize: 16,
+                    marginVertical: 12,
+                }}
+            >
+                By signing up you agree to our{" "}
+                <Link
+                    screen="TermsOfServices"
+                    style={{ color: theme.colors.primary }}
+                >
+                    terms of service
+                </Link>{" "}
+                and privacy policy.
             </Text>
 
-            <Button loading={pending} disabled={pending}>
+            <Button
+                loading={pending}
+                disabled={pending}
+                onPress={handleRegister}
+            >
                 Create Account
             </Button>
             <View style={{ marginTop: 32, flexDirection: "column", gap: 16 }}>
@@ -66,14 +82,6 @@ const Register = () => {
                         >
                             Signin
                         </Link>
-                    </Text>
-                </View>
-                <View>
-                    <Text style={{ ...theme.fonts.regular, fontSize: 16 }}>
-                        Forgotten your password?{" "}
-                        <Text style={{ color: theme.colors.primary }}>
-                            Reset it
-                        </Text>
                     </Text>
                 </View>
             </View>

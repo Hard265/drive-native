@@ -15,6 +15,8 @@ import SignIn from "./screens/auth/SignIn";
 import authStore from "./stores/auth";
 import colors from "./theme/colors";
 import Register from "./screens/auth/Register";
+import ResetPassword from "./screens/auth/ResetPassword";
+import TermsOfServices from "./screens/extra/TermsOfServices";
 
 const RootStack = createNativeStackNavigator();
 
@@ -84,24 +86,37 @@ export default observer(() => {
                             <RootStack.Screen name="Home" component={Home} />
                         </RootStack.Group>
                     ) : (
-                        <RootStack.Group
-                            screenOptions={{
-                                headerTitle: "",
-                                headerShadowVisible: false,
-                                headerTitleStyle: {
-                                    fontFamily: "Roobert-Bold",
-                                },
-                            }}
-                        >
-                            <RootStack.Screen
-                                name="SignIn"
-                                component={SignIn}
-                            />
-                            <RootStack.Screen
-                                name="Register"
-                                component={Register}
-                            />
-                        </RootStack.Group>
+                        <>
+                            <RootStack.Group
+                                screenOptions={{
+                                    headerTitle: "",
+                                    animation: "slide_from_right",
+                                    headerShadowVisible: false,
+                                    headerTitleStyle: {
+                                        fontFamily: "Roobert-Bold",
+                                    },
+                                }}
+                            >
+                                <RootStack.Screen
+                                    name="SignIn"
+                                    component={SignIn}
+                                />
+                                <RootStack.Screen
+                                    name="Register"
+                                    component={Register}
+                                />
+                                <RootStack.Screen
+                                    name="ResetPassword"
+                                    component={ResetPassword}
+                                />
+                            </RootStack.Group>
+                            <RootStack.Group>
+                                <RootStack.Screen
+                                    name="TermsOfServices"
+                                    component={TermsOfServices}
+                                />
+                            </RootStack.Group>
+                        </>
                     )}
                 </RootStack.Navigator>
             </NavigationContainer>

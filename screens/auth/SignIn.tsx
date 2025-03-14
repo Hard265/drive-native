@@ -15,10 +15,6 @@ const SignIn = () => {
 
     const handleSignIn = async () => {
         setPending(true);
-        await authStore.setToken({
-            access: "TODO:",
-            refresh: "TODO:",
-        });
         setPending(false);
     };
 
@@ -34,22 +30,25 @@ const SignIn = () => {
                     marginBottom: 32,
                 }}
             >
-                Sign In to Omni_drive
+                Sign In
             </Text>
             <Input
                 label="Email address"
                 value={form.email}
+                placeholder="your@email.com"
+                type="email-address"
                 onChange={(email) => setForm((prev) => ({ ...prev, email }))}
             />
             <Input
                 label="Password"
                 value={form.password}
+                secure
                 onChange={(password) =>
                     setForm((prev) => ({ ...prev, password }))
                 }
             />
-            
-            <Button loading={pending} disabled={pending}>
+
+            <Button loading={pending} disabled={pending} onPress={handleSignIn}>
                 Sign in
             </Button>
             <View style={{ marginTop: 32, flexDirection: "column", gap: 16 }}>
@@ -67,9 +66,12 @@ const SignIn = () => {
                 <View>
                     <Text style={{ ...theme.fonts.regular, fontSize: 16 }}>
                         Forgot your password?{" "}
-                        <Text style={{ color: theme.colors.primary }}>
+                        <Link
+                            screen="ResetPassword"
+                            style={{ color: theme.colors.primary }}
+                        >
                             Reset it
-                        </Text>
+                        </Link>
                     </Text>
                 </View>
             </View>

@@ -9,6 +9,7 @@ interface InputProps {
     disabled?: boolean;
     placeholder?: string;
     description?: string;
+    secure?: boolean;
     type?: TextInputProps["keyboardType"];
 }
 
@@ -42,6 +43,11 @@ const Input = (props: InputProps) => {
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 cursorColor={theme.colors.primary}
+                selectionHandleColor={theme.colors.primary}
+                selectionColor={theme.colors.primary
+                    .replace("rgb", "rgba")
+                    .replace(")", ", 0.5)")}
+                secureTextEntry={props.secure}
                 style={{
                     paddingVertical: 12,
                     paddingHorizontal: 16,
@@ -52,6 +58,8 @@ const Input = (props: InputProps) => {
                         : theme.colors.border,
                     opacity: props.disabled ? 0.5 : 1,
                     width: "100%",
+                    ...theme.fonts.regular,
+                    fontSize: 16,
                 }}
             />
             {props.description && (
