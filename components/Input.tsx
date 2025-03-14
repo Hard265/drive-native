@@ -21,13 +21,14 @@ const Input = (props: InputProps) => {
             style={{
                 flexDirection: "column",
                 gap: 4,
-                alignItems: "flex-start",
+                width: "100%"
             }}
         >
             <Text
                 style={{
                     color: theme.colors.text,
                     fontFamily: theme.fonts.medium.fontFamily,
+                    fontSize:16
                 }}
             >
                 {props.label}
@@ -42,13 +43,13 @@ const Input = (props: InputProps) => {
                 onBlur={() => setIsFocused(false)}
                 cursorColor={theme.colors.primary}
                 style={{
-                    paddingVertical: isFocused ? 10 : 12,
+                    paddingVertical: 12,
                     paddingHorizontal: 16,
                     borderWidth: isFocused ? 2 : 1,
                     color: theme.colors.text,
                     borderColor: isFocused
-                        ? theme.colors.border
-                        : theme.colors.primary,
+                        ? theme.colors.primary
+                        : theme.colors.border,
                     opacity: props.disabled ? 0.5 : 1,
                     width: "100%",
                 }}

@@ -1,10 +1,12 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import authStore from "../../stores/auth";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import { Link, useTheme } from "@react-navigation/native";
 
 const SignIn = () => {
+    const theme = useTheme()
     const [form, setForm] = React.useState({
         email: "",
         password: "",
@@ -21,11 +23,12 @@ const SignIn = () => {
     };
 
     return (
-        <View style={{ flex: 1, alignItems: "flex-start" }}>
+        <ScrollView contentContainerStyle={{ alignItems: "flex-start", gap: 16 }} style={{ flex: 1, padding: 12 }}>
             <Text
                 style={{
                     fontSize: 24,
                     fontFamily: "Roobert-Medium",
+                    marginBottom: 32
                 }}
             >
                 Sign In to Omni_drive
@@ -45,10 +48,17 @@ const SignIn = () => {
             <Button loading={pending} disabled={pending}>
                 Sign in
             </Button>
-<View>
+            <View style={{ marginTop: 32, flexDirection: "column", gap: 16 }}>
 
-</View>
-        </View>
+                <View>
+                    <Text style={{ ...theme.fonts.regular, fontSize: 16 }}>Need an account? <Text style={{ color: theme.colors.primary }}>Signup</Text></Text>
+                </View>
+                <View>
+                    <Text style={{ ...theme.fonts.regular, fontSize: 16 }}>Forgotten your password? <Text style={{ color: theme.colors.primary }}>Reset it</Text></Text>
+
+                </View>
+            </View>
+        </ScrollView>
     );
 };
 

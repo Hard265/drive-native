@@ -1,19 +1,20 @@
-import * as React from "react";
-import { observer } from "mobx-react-lite";
 import {
     DefaultTheme,
     NavigationContainer,
     Theme,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useFonts } from "expo-font";
 import * as SplashScren from "expo-splash-screen";
-import authStore from "./stores/auth";
+import { observer } from "mobx-react-lite";
+import * as React from "react";
+import { useColorScheme } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Home from "./screens/Home";
 import SignIn from "./screens/auth/SignIn";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import authStore from "./stores/auth";
 import colors from "./theme/colors";
-import { useColorScheme } from "react-native";
-import { useFonts } from "expo-font";
+import Register from "./screens/auth/Register";
 
 const RootStack = createNativeStackNavigator();
 
@@ -83,10 +84,14 @@ export default observer(() => {
                             <RootStack.Screen name="Home" component={Home} />
                         </RootStack.Group>
                     ) : (
-                        <RootStack.Group screenOptions={{ headerShown: false }}>
+                        <RootStack.Group screenOptions={{ headerTitle: '', headerShadowVisible: false, headerTitleStyle: { fontFamily: "Roobert-Bold" } }}>
                             <RootStack.Screen
                                 name="SignIn"
                                 component={SignIn}
+                            />
+                            <RootStack.Screen
+                                name="Register"
+                                component={Register}
                             />
                         </RootStack.Group>
                     )}
