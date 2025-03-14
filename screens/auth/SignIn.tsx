@@ -6,7 +6,7 @@ import Input from "../../components/Input";
 import { Link, useTheme } from "@react-navigation/native";
 
 const SignIn = () => {
-    const theme = useTheme()
+    const theme = useTheme();
     const [form, setForm] = React.useState({
         email: "",
         password: "",
@@ -23,12 +23,15 @@ const SignIn = () => {
     };
 
     return (
-        <ScrollView contentContainerStyle={{ alignItems: "flex-start", gap: 16 }} style={{ flex: 1, padding: 12 }}>
+        <ScrollView
+            contentContainerStyle={{ alignItems: "flex-start", gap: 16 }}
+            style={{ flex: 1, padding: 12 }}
+        >
             <Text
                 style={{
                     fontSize: 24,
                     fontFamily: "Roobert-Medium",
-                    marginBottom: 32
+                    marginBottom: 32,
                 }}
             >
                 Sign In to Omni_drive
@@ -45,17 +48,29 @@ const SignIn = () => {
                     setForm((prev) => ({ ...prev, password }))
                 }
             />
+            
             <Button loading={pending} disabled={pending}>
                 Sign in
             </Button>
             <View style={{ marginTop: 32, flexDirection: "column", gap: 16 }}>
-
                 <View>
-                    <Text style={{ ...theme.fonts.regular, fontSize: 16 }}>Need an account? <Text style={{ color: theme.colors.primary }}>Signup</Text></Text>
+                    <Text style={{ ...theme.fonts.regular, fontSize: 16 }}>
+                        Need an account?{" "}
+                        <Link
+                            screen="Register"
+                            style={{ color: theme.colors.primary }}
+                        >
+                            Sign up
+                        </Link>
+                    </Text>
                 </View>
                 <View>
-                    <Text style={{ ...theme.fonts.regular, fontSize: 16 }}>Forgotten your password? <Text style={{ color: theme.colors.primary }}>Reset it</Text></Text>
-
+                    <Text style={{ ...theme.fonts.regular, fontSize: 16 }}>
+                        Forgot your password?{" "}
+                        <Text style={{ color: theme.colors.primary }}>
+                            Reset it
+                        </Text>
+                    </Text>
                 </View>
             </View>
         </ScrollView>

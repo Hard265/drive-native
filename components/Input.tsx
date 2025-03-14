@@ -21,14 +21,14 @@ const Input = (props: InputProps) => {
             style={{
                 flexDirection: "column",
                 gap: 4,
-                width: "100%"
+                width: "100%",
             }}
         >
             <Text
                 style={{
                     color: theme.colors.text,
                     fontFamily: theme.fonts.medium.fontFamily,
-                    fontSize:16
+                    fontSize: 16,
                 }}
             >
                 {props.label}

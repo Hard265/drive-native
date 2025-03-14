@@ -84,7 +84,15 @@ export default observer(() => {
                             <RootStack.Screen name="Home" component={Home} />
                         </RootStack.Group>
                     ) : (
-                        <RootStack.Group screenOptions={{ headerTitle: '', headerShadowVisible: false, headerTitleStyle: { fontFamily: "Roobert-Bold" } }}>
+                        <RootStack.Group
+                            screenOptions={{
+                                headerTitle: "",
+                                headerShadowVisible: false,
+                                headerTitleStyle: {
+                                    fontFamily: "Roobert-Bold",
+                                },
+                            }}
+                        >
                             <RootStack.Screen
                                 name="SignIn"
                                 component={SignIn}

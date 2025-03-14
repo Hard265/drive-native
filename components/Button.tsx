@@ -28,7 +28,7 @@ const Button = (props: ButtonProps) => {
                 style={{
                     color: theme.colors.background,
                     fontFamily: theme.fonts.medium.fontFamily,
-                    fontSize:16
+                    fontSize: 16,
                 }}
             >
                 {props.children}
