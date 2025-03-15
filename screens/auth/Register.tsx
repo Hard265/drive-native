@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import authStore from "../../stores/auth";
+import { Heading } from "../../components/Text";
 
 const Register = () => {
     const theme = useTheme();
@@ -24,15 +24,7 @@ const Register = () => {
             contentContainerStyle={{ alignItems: "flex-start", gap: 16 }}
             style={{ flex: 1, padding: 12 }}
         >
-            <Text
-                style={{
-                    fontSize: 24,
-                    fontFamily: "Roobert-Medium",
-                    marginBottom: 32,
-                }}
-            >
-                Create an account
-            </Text>
+            <Heading>Create an account</Heading>
             <Input
                 label="Email address"
                 value={form.email}

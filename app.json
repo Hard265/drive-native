@@ -20,7 +20,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.hard_265.drivenative"
     },
     "platforms": [
       "ios",
@@ -33,6 +34,11 @@
     "plugins": [
       "expo-secure-store",
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "18f6965e-5b0e-43d7-a55d-5e7903424263"
+      }
+    }
   }
 }

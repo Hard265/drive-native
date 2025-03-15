@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
+import { Link, useTheme } from "@react-navigation/native";
 import authStore from "../../stores/auth";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import { Link, useTheme } from "@react-navigation/native";
+import { Heading } from "../../components/Text";
 
 const SignIn = () => {
     const theme = useTheme();
@@ -23,15 +24,7 @@ const SignIn = () => {
             contentContainerStyle={{ alignItems: "flex-start", gap: 16 }}
             style={{ flex: 1, padding: 12 }}
         >
-            <Text
-                style={{
-                    fontSize: 24,
-                    fontFamily: "Roobert-Medium",
-                    marginBottom: 32,
-                }}
-            >
-                Sign In
-            </Text>
+            <Heading>Sign In</Heading>
             <Input
                 label="Email address"
                 value={form.email}
